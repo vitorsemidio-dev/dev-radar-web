@@ -3,6 +3,7 @@ import React from 'react';
 import './global.css';
 import './App.css';
 import './Sidebar.css';
+import './Main.css';
 
 function App() {
 
@@ -46,11 +47,11 @@ function App() {
                 <strong>Vitor Emidio</strong>
                 <span>ReactJS, Angular, Node.js</span>
               </div>
+            </header>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro repellendus laudantium atque impedit! Est nobis magnam
               </p>
               <a href="https://github.com/vitorsemidio-dev">Acessar Perfil</a>
-            </header>
           </li>
           <li className="dev-item">
             <header>
@@ -59,11 +60,11 @@ function App() {
                 <strong>Vitor Emidio</strong>
                 <span>ReactJS, Angular, Node.js</span>
               </div>
+            </header>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro repellendus laudantium atque impedit! Est nobis magnam
               </p>
               <a href="https://github.com/vitorsemidio-dev">Acessar Perfil</a>
-            </header>
           </li>
           <li className="dev-item">
             <header>
@@ -72,11 +73,11 @@ function App() {
                 <strong>Vitor Emidio</strong>
                 <span>ReactJS, Angular, Node.js</span>
               </div>
+            </header>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro repellendus laudantium atque impedit! Est nobis magnam
               </p>
               <a href="https://github.com/vitorsemidio-dev">Acessar Perfil</a>
-            </header>
           </li>
           <li className="dev-item">
             <header>
@@ -85,11 +86,11 @@ function App() {
                 <strong>Vitor Emidio</strong>
                 <span>ReactJS, Angular, Node.js</span>
               </div>
+            </header>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro repellendus laudantium atque impedit! Est nobis magnam
               </p>
               <a href="https://github.com/vitorsemidio-dev">Acessar Perfil</a>
-            </header>
           </li>
         </ul>
       </main>
