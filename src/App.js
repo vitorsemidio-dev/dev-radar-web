@@ -1,21 +1,42 @@
 import React from 'react';
 
+import './global.css';
+import './App.css';
+
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="app">
+      <aside>
+        <strong>Cadastrar</strong>
+        <form action="">
+          <div className="input-block">
+            <label htmlFor="github_username">Usuário do Github</label>
+            <input id="github_username" name="github_username" required/>
+          </div>
+
+          <div className="input-block">
+            <label htmlFor="techs">Tecnologias</label>
+            <input id="techs" name="techs" required/>
+          </div>
+
+          <div className="input-group">
+            <div className="input-block">
+              <label htmlFor="latitude">Latitude</label>
+              <input id="latitude" name="latitude" required/>
+            </div>
+
+            <div className="input-block">
+              <label htmlFor="longitude">Longitude</label>
+              <input id="longitude" name="longitude" required/>
+            </div>
+          </div>
+
+          <button type="submit">Salvar</button>
+
+        </form>
+      </aside>
+      <main></main>
     </div>
   );
 }
