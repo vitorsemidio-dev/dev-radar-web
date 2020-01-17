@@ -8,6 +8,8 @@ import './Main.css';
 
 
 function App() {
+  const [devs, setDevs] = useState([]);
+
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [github_username, setGithubUsername] = useState('');
@@ -29,6 +31,21 @@ function App() {
     )
   }, []);
 
+  useEffect(() => {
+    async function loadDevs() {
+      const response = await api.get('/devs');
+
+      setDevs(response.data);
+    }
+
+    loadDevs();
+  }, []);
+
+  function cleanFileds() {
+    setGithubUsername('');
+    setTechs('');
+  }
+
   async function handleAddDev(e) {
     e.preventDefault();
 
@@ -39,7 +56,9 @@ function App() {
       longitude,
     });
 
-    console.log(response.data);
+    cleanFileds();
+
+    setDevs([...devs, response.data]);
   }
 
   return (
@@ -97,58 +116,21 @@ function App() {
       </aside>
       <main>
         <ul>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/52754546?s=460&v=4" alt="Vitor Emidio"/>
-              <div className="user-info">
-                <strong>Vitor Emidio</strong>
-                <span>ReactJS, Angular, Node.js</span>
-              </div>
-            </header>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro repellendus laudantium atque impedit! Est nobis magnam
-              </p>
-              <a href="https://github.com/vitorsemidio-dev">Acessar Perfil</a>
-          </li>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/52754546?s=460&v=4" alt="Vitor Emidio"/>
-              <div className="user-info">
-                <strong>Vitor Emidio</strong>
-                <span>ReactJS, Angular, Node.js</span>
-              </div>
-            </header>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro repellendus laudantium atque impedit! Est nobis magnam
-              </p>
-              <a href="https://github.com/vitorsemidio-dev">Acessar Perfil</a>
-          </li>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/52754546?s=460&v=4" alt="Vitor Emidio"/>
-              <div className="user-info">
-                <strong>Vitor Emidio</strong>
-                <span>ReactJS, Angular, Node.js</span>
-              </div>
-            </header>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro repellendus laudantium atque impedit! Est nobis magnam
-              </p>
-              <a href="https://github.com/vitorsemidio-dev">Acessar Perfil</a>
-          </li>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/52754546?s=460&v=4" alt="Vitor Emidio"/>
-              <div className="user-info">
-                <strong>Vitor Emidio</strong>
-                <span>ReactJS, Angular, Node.js</span>
-              </div>
-            </header>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro repellendus laudantium atque impedit! Est nobis magnam
-              </p>
-              <a href="https://github.com/vitorsemidio-dev">Acessar Perfil</a>
-          </li>
+          {devs.map(dev => (
+            <li key={dev._id} className="dev-item">
+              <header>
+                <img src={dev.avatar_url} alt={dev.name}/>
+                <div className="user-info">
+                  <strong>{dev.name}</strong>
+                  <span>{dev.techs.join(', ')}</span>
+                </div>
+              </header>
+                <p>
+                  {dev.bio}
+                </p>
+                <a href={`https://github.com/${dev.github_username}`}>Acessar Perfil</a>
+            </li>
+          ))}
         </ul>
       </main>
     </div>
