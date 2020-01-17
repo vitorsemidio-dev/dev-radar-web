@@ -9,6 +9,8 @@ import './Main.css';
 function App() {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
+  const [github_username, setGithubUsername] = useState('');
+  const [techs, setTechs] = useState('');
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -33,23 +35,45 @@ function App() {
         <form action="">
           <div className="input-block">
             <label htmlFor="github_username">Usuário do Github</label>
-            <input id="github_username" name="github_username" required/>
+            <input 
+              onChange={e => setGithubUsername(e.target.value)}
+              value={github_username}
+              id="github_username"
+              name="github_username"
+              required/>
           </div>
 
           <div className="input-block">
             <label htmlFor="techs">Tecnologias</label>
-            <input id="techs" name="techs" required/>
+            <input
+              onChange={e => setTechs(e.target.value)}
+              value={techs}
+              id="techs"
+              name="techs"
+              required/>
           </div>
 
           <div className="input-group">
             <div className="input-block">
               <label htmlFor="latitude">Latitude</label>
-              <input id="latitude" name="latitude" required defaultValue={latitude}/>
+              <input 
+                onChange={e => setLatitude(e.target.value)}
+                type="number"
+                id="latitude"
+                name="latitude"
+                required
+                value={latitude}/>
             </div>
 
             <div className="input-block">
               <label htmlFor="longitude">Longitude</label>
-              <input id="longitude" name="longitude" required defaultValue={longitude}/>
+              <input 
+                onChange={e => setLongitude(e.target.value)}
+                type="number"
+                id="longitude"
+                name="longitude"
+                required
+                value={longitude}/>
             </div>
           </div>
 
